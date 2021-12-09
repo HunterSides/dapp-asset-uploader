@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+        <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimal-ui'>
+
+        <link href='./favicon.ico' rel='icon'>
+        <link href='./css/themes/default.css' rel='stylesheet' type='text/css'>
+        <link href='./css/app.css' rel='stylesheet' type='text/css'>
+
+        <noscript>
+            Javascript Is Required To View This Website! <br />
+
+            <a href='https://www.enable-javascript.com/' target='_blank'>
+                Follow These Instructions To Enable Javascript In Your Web Browser.
+            </a>
+        </noscript>
+    </head>
+    <body>
+        <section
+            class='site'
+            data-bind='{"ref": "scrollbar.mount[],scrollbar.width.mount,scrollto.mount,site.container", "refs": {"controls": "site.controls", "scrollbar": "scrollbar.site"}}'
+            data-scroll='controls,scrollbar'
+            data-scrollbar
+            style='background: url(./images/tile.png) repeat;'
+        >
+            <section class='page --flex-center' data-bind='{"ref": "site.scrolltop"}' style='display: flex;'>
+                <div class="--flex-column --flex-horizontal --max-width --max-width-800px --spacer-vertical --spacer-600">
+                    <div class="--text-center">
+                        <h1 class="page-title --text-1.25x">
+                            Upload Decentralized Images In <span class='--color --color-secondary-400 --text-underline'>Seconds</span>
+                        </h1>
+
+                        <span class="page-subtitle --margin-top --margin-500">
+                            Dash Deploy provides decentralized hosting of decentralized assets. Join the decentralized internet revolution, start uploading decentralized assets today!
+                        </span>
+                    </div>
+
+                    <label class='card --background-grey-400 --border --border-border-300 --border-dashed --border-radius-700 --border-secondary --border-state --flex-horizontal --spacer-top --spacer-500'>
+                        <div class="text-list --padding --padding-800">
+                            <div class="text --flex-center">
+                                <span class='--text-crop-top'>
+                                    Drag & drop image(s) to upload
+                                </span>
+                            </div>
+
+                            <div class="text --flex-center">
+                                <div class="--text-crop-bottom">
+                                    or <b class='--color-secondary-400 --text-underline'>click</b> to browse files on your computer
+                                </div>
+                            </div>
+                        </div>
+
+                        <input
+                            accept="image/*"
+                            class='--hidden'
+                            data-bind='{"ref": "image.image", "refs": {
+                                "ipfs": "upload.ipfs",
+                                "metadata": "upload.metadata"
+                            }}'
+                            data-change='upload.image'
+                            data-click='upload.reset'
+                            type='file'
+                            multiple
+                        >
+                    </label>
+                    
+
+                    <div class="row --flex-horizontal-space-between --hidden --width --width-full" data-bind='{"ref": "upload.metadata"}'>
+                        <div class="field field--background --background-state --background-white --border-radius-600 --flex-column --spacer-top --spacer-400 --text-crop-top" data-focusinout="toggle">
+                            <div class="field-title --flex-horizontal-space-between --flex-vertical">
+                                Name
+                            </div>
+
+                            <label class="field-mask field-mask--input --flex-row">
+                                <input class='field-tag' data-bind='{"ref": "link.tag,image.name"}' data-keydown='field.tag' placeholder='' type='text' value=''>
+                            </label>
+                        </div>
+
+                        <div class="field field--background --background-state --background-white --border-radius-600 --flex-column --spacer-top --spacer-300 --text-crop-top" data-focusinout="toggle">
+                            <span class="field-title">Short Description</span>
+
+                            <label class="field-mask field-mask--input --flex-row">
+                                <input class='field-tag' data-bind='{"ref": "link.tag,image.description"}' data-keydown='field.tag' placeholder='' type='text' value=''>
+                            </label>
+                        </div>
+
+                        <template data-bind='{"ref": "link.links"}'>
+                            <label class="field-mask field-mask--input --flex-row --margin-top" data-bind='{"ref": "link.{value}"}'>
+                                <input class='field-tag' data-bind='{"ref": "image.keywords.k{id}"}' placeholder='' type='text' value='{value}'>
+
+                                <div class="button --color-state --color-text" data-bind='{"refs": {"remove": "link.{value}"}}' data-click='remove'>
+                                    <div class="icon">
+                                        <svg width="16" height="16" viewBox="0 0 16 16"><path d="M3.527 14.948a.176.176 0 01-.248 0L1.051 12.72a.176.176 0 010-.248l11.42-11.419a.176.176 0 01.248 0l2.229 2.228a.174.174 0 010 .248L3.527 14.948z"/><path d="M12.472 14.948c.068.068.18.068.248 0l2.229-2.229a.176.176 0 000-.248L3.528 1.052a.176.176 0 00-.248 0L1.052 3.28a.176.176 0 000 .248l11.42 11.42z"/></svg>
+                                    </div>
+                                </div>
+                            </label>
+                        </template>
+
+                        <div class="field field--background --background-state --background-white --border-radius-600 --flex-column --spacer-top --spacer-300 --text-crop-top" data-focusinout="toggle">
+                            <span class="field-title">Keywords</span>
+
+                            <label class="field-mask field-mask--input --flex-row">
+                                <input class='field-tag' data-bind='{"ref": "link.tag", "refs": {"field": {"container": "link.container", "template": "link.links"}}}' data-keydown='field.tag' placeholder='' type='text' value=''>
+
+                                <div class="button --color-state --color-text" data-bind='{"refs": {"field": {"container": "link.container", "tag": "link.tag", "template": "link.links"}}}' data-click='field.tag.button'>
+                                    <div class="icon">
+                                        <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 15.801a.2.2 0 01-.2.199H6.2a.2.2 0 01-.2-.199V.2c0-.11.09-.2.2-.2h3.6c.11 0 .2.09.2.2v15.601z"/><path d="M.199 10A.2.2 0 010 9.8V6.2A.2.2 0 01.199 6H15.8c.11 0 .2.09.2.2v3.6a.2.2 0 01-.2.2H.199z"/></svg>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <div class="row" data-bind='{"ref": "link.container"}'></div>
+                        </div>
+
+                        <label class='field --flex-row --spacer-top --spacer-300' data-bind='{"ref": "field.checkbox.mount[]", "refs": {"field": "field.checkbox.encrypt"}}' data-change='field.checkbox'>
+                            <div class="--flex-fill --text-crop-top">
+                                <span class="field-title">Encrypt Image(s)</span>
+                                <div class="field-description">
+                                    This feature will typically be used for unlockable content. Image files will be encrypted before uploading to IPFS.
+                                </div>
+                            </div>
+
+                            <div class="--flex-center">
+                                <div class='field-mask field-mask--checkmark --color-secondary'>
+                                    <input class='field-tag field-tag--hidden' type='checkbox' value='1' data-bind='{"ref": "field.checkbox.encrypt.tag,image.encrypt"}'>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class='field --flex-row --spacer-top --spacer-300' data-bind='{"ref": "field.checkbox.mount[]", "refs": {"field": "field.checkbox.compress"}}' data-change='field.checkbox'>
+                            <div class="--flex-fill --text-crop-top">
+                                <span class="field-title">Compress</span>
+                                <div class="field-description">
+                                    Image(s) will be compressed before upload ( may affect quality )
+                                </div>
+                            </div>
+
+                            <div class="--flex-center">
+                                <div class='field-mask field-mask--checkmark --color-secondary'>
+                                    <input class='field-tag field-tag--hidden' type='checkbox' value='1' data-bind='{"ref": "field.checkbox.compress.tag,image.compress"}'>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class='field --flex-row --spacer-top --spacer-300' data-bind='{"ref": "field.checkbox.mount[]", "refs": {"field": "field.checkbox.unlisted"}}' data-change='field.checkbox'>
+                            <div class="--flex-fill --text-crop-top">
+                                <span class="field-title">Upload as Unlisted</span>
+                                <div class="field-description">
+                                    ENCRYPT EVERYTHING. You are treating this uploader as a dropbox like service.
+                                    Platform documents are public but all data associated with this upload is encrypted before saving within platform documents.
+                                    Once file is uploaded to IPFS the pin will also be encrypted before saving in platform documents.
+                                </div>
+                            </div>
+
+                            <div class="--flex-center">
+                                <div class='field-mask field-mask--checkmark --color-secondary'>
+                                    <input class='field-tag field-tag--hidden' type='checkbox' value='1' data-bind='{"ref": "field.checkbox.unlisted.tag,image.unlisted"}'>
+                                </div>
+                            </div>
+                        </label>
+
+                        <div class="row --flex-end --spacer-top --spacer-300">
+                            <button class="button --background-secondary --background-state --color-state --color-white" data-click='upload.metadata'>
+                                Upload
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="list --spacer-top --spacer-300">
+                        <div class="list-item list-item--bulletpoint --background-black-400">
+                            Asset will be uploaded to IPFS on save
+                        </div>
+                    </div>
+                </div>
+
+                <div class="banner" style='background-image: url(./images/background.png); opacity: 0.06;'></div>
+            </section>
+
+            <div class='anchors' style='position: fixed'>
+                <div class="--absolute-full --active --background --background-gradient --background-grey --flex-center --hidden-not-active --pointer-events-auto" data-bind='{"ref": "anchor.loading"}'>
+                    <div class="button button--processing --color-secondary-400 --pointer-event-none --size-700"></div>
+
+                    <h2 class="page-title --margin-top --margin-600 --text-center">
+                        Connecting to Dash Platform Wallet
+                    </h2>
+
+                    <span class="page-subtitle --margin-top --margin-200 --max-width --max-width-480px --text-center">
+                        Connecting to platform on testnet can take a few seconds to a minute
+                    </span>
+                </div>
+
+                <div class='alert anchor anchor--ne --flex-row' data-bind='{"ref": "alert.error.alert"}' >
+                    <div class='button --background-state --background-red --border-radius-0px --color-state --color-white --flex-center --width-40px' data-bind='{"refs": {"deactivate": "alert.error.alert"}}' data-click='deactivate'>
+                        <div class="icon --size-300">
+                            <svg width="16" height="16" viewBox="0 0 16 16"><path d="M3.527 14.948a.176.176 0 01-.248 0L1.051 12.72a.176.176 0 010-.248l11.42-11.419a.176.176 0 01.248 0l2.229 2.228a.174.174 0 010 .248L3.527 14.948z"/><path d="M12.472 14.948c.068.068.18.068.248 0l2.229-2.229a.176.176 0 000-.248L3.528 1.052a.176.176 0 00-.248 0L1.052 3.28a.176.176 0 000 .248l11.42 11.42z"/></svg>
+                        </div>
+                    </div>
+
+                    <div class='--background --background-white-400 --flex-fill --padding' data-bind='{"ref": "alert.error.messages"}'></div>
+                </div>
+
+                <div class='alert anchor anchor--ne --flex-row' data-bind='{"ref": "alert.success.alert"}' >
+                    <div class='button --background-state --background-green --border-radius-0px --color-state --color-white --flex-center --width-40px' data-bind='{"refs": {"deactivate": "alert.success.alert"}}' data-click='deactivate'>
+                        <div class="icon --size-300">
+                            <svg width="16" height="16" viewBox="0 0 16 16"><path d="M3.527 14.948a.176.176 0 01-.248 0L1.051 12.72a.176.176 0 010-.248l11.42-11.419a.176.176 0 01.248 0l2.229 2.228a.174.174 0 010 .248L3.527 14.948z"/><path d="M12.472 14.948c.068.068.18.068.248 0l2.229-2.229a.176.176 0 000-.248L3.528 1.052a.176.176 0 00-.248 0L1.052 3.28a.176.176 0 000 .248l11.42 11.42z"/></svg>
+                        </div>
+                    </div>
+
+                    <div class='--background --background-white-400 --flex-fill --padding' data-bind='{"ref": "alert.success.messages"}'></div>
+                </div>
+            </div>
+
+            <div class='scrollbar scrollbar--fixed scrollbar--hidden' data-bind='{"ref": "scrollbar.site"}'></div>
+        </section>
+
+        <script src='./js/app.min.js'></script>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+{
+    "atomWatch": [
+        {
+            "files": "**/*.scss",
+            "command": "npm run css:build"
+        },
+        {
+            "files": "**/*.js",
+            "command": "npm run js:build"
+        },
+        {
+            "files": "**/svg/uncompressed/**/*.svg",
+            "command": "npm run svg:compress"
+        }
+    ],
+    "author": "Hunter Sides",
+    "description": "Multi asset uploader to IPFS using 100% decentralized infrastructure built by ICJR",
+    "devDependencies": {
+        "@ffmpeg/core": "^0.10.0",
+        "@ffmpeg/ffmpeg": "^0.10.1",
+        "compressorjs": "^1.1.1",
+        "bignumber.js": "^9.0.1",
+        "copyfiles": "^2.4.1",
+        "cpx": "^1.5.0",
+        "cross-env": "^7.0.3",
+        "dapp": "git+https://github.com/dash-incubator/dapp-sdk.git",
+        "glob": "^7.1.7",
+        "node-polyfill-webpack-plugin": "^1.1.4",
+        "npm-run-all": "^4.1.3",
+        "ui": "git+https://github.com/esportsplus/ui.git",
+        "webpack": "^5.22.0",
+        "webpack-cli": "^4.5.0"
+    },
+    "name": "dapp-project",
+    "private": false,
+    "scripts": {
+        "build": "run-p css:build js:build",
+        "-": "-",
+        "css:build": "webpack --config node_modules/ui/webpack.sass.config.js --env=input=./src --env=output=./dist/css",
+        "--": "--",
+        "js:build": "webpack --config webpack.javascript.config.js --env=input={%INIT_CWD%/src,%INIT_CWD%/node_modules/ui} --env=output=%INIT_CWD%/dist/js --env=production=true"
+    },
+    "version": "0.0.1"
+}
