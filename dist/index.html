@@ -64,6 +64,62 @@
                             multiple
                         >
                     </label>
+                    <label class='card --background-grey-400 --border --border-border-300 --border-dashed --border-radius-700 --border-secondary --border-state --flex-horizontal --spacer-top --spacer-500'>
+                        <div class="text-list --padding --padding-800">
+                            <div class="text --flex-center">
+                                <span class='--text-crop-top'>
+                                    Drag & drop video(s) to upload
+                                </span>
+                            </div>
+
+                            <div class="text --flex-center">
+                                <div class="--text-crop-bottom">
+                                    or <b class='--color-secondary-400 --text-underline'>click</b> to browse files on your computer
+                                </div>
+                            </div>
+                        </div>
+
+                        <input
+                            accept="video/*"
+                            class='--hidden'
+                            data-bind='{"ref": "video.video", "refs": {
+                                "ipfs": "upload.ipfs",
+                                "metadata": "upload.metadata"
+                            }}'
+                            data-change='upload.video'
+                            data-click='upload.reset'
+                            type='file'
+                            multiple
+                        >
+                    </label>
+                    <label class='card --background-grey-400 --border --border-border-300 --border-dashed --border-radius-700 --border-secondary --border-state --flex-horizontal --spacer-top --spacer-500'>
+                        <div class="text-list --padding --padding-800">
+                            <div class="text --flex-center">
+                                <span class='--text-crop-top'>
+                                    Drag & drop audio file(s) to upload
+                                </span>
+                            </div>
+
+                            <div class="text --flex-center">
+                                <div class="--text-crop-bottom">
+                                    or <b class='--color-secondary-400 --text-underline'>click</b> to browse files on your computer
+                                </div>
+                            </div>
+                        </div>
+
+                        <input
+                            accept="audio/*"
+                            class='--hidden'
+                            data-bind='{"ref": "audio.audio", "refs": {
+                                "ipfs": "upload.ipfs",
+                                "metadata": "upload.metadata"
+                            }}'
+                            data-change='upload.audio'
+                            data-click='upload.reset'
+                            type='file'
+                            multiple
+                        >
+                    </label>
                     
 
                     <div class="row --flex-horizontal-space-between --hidden --width --width-full" data-bind='{"ref": "upload.metadata"}'>
